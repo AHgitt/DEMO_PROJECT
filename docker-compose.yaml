@@ -1,0 +1,30 @@
+version: "3"
+services:
+  python-flask-app:
+    image: ahdock/flask
+    container_name: python-flask-app
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./:/app
+    networks:
+      - mysql-python-app-network
+
+  mysql-flask-app:
+    image: mysql:8.0.17
+    container_name: mysql-flask-app
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: my_websites
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql-python-app-volume:/var/lib/mysql
+      - mysql-python-app-volume-config:/etc/mysql
+
+networks:
+  mysql-python-app-network:
+    name: mysql-python-app-network
+volumes:
+  mysql-python-app-volume:
+  mysql-python-app-volume-config:

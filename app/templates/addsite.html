@@ -1,0 +1,24 @@
+ {% block content %}
+ <div class="content"> 
+     <h2>Add a Website  |  <a href="{{ url_for('index') }}">Home</a></h2>
+     <form action="" method="post" novalidate>
+         {{ form.hidden_tag() }} 
+         <p> 
+             {{ form.url.label }}<br>
+             {{ form.url(size=32) }}
+         </p>
+         <br>
+         <p> 
+             {{ form.colour.label }}<br>
+             {{ form.colour(size=32) }}
+         </p>
+         <br>
+         <p>
+             {{ form.submit() }} 
+         </p> 
+     </form>
+        {% for msg in get_flashed_messages() %}
+          <h2>{{ msg }}</h2>
+        {% endfor %}
+ </div> 
+ {% endblock %} 
