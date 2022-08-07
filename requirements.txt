@@ -6,4 +6,6 @@ flask_wtf
 flask_testing
 pytest
 pytest-cov
-mysql-connector-python-rf
+cryptography
+# mysql-connector-python-rf
+# mysql-connector

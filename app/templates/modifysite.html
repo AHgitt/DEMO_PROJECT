@@ -4,15 +4,20 @@
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
        <p>
-             {{ form.url.label }}<br>
+             {{ form.url.label }}
              {{ form.url(size=32) }}
          </p>
          <br>
          <p>
-             {{ form.colour.label }}<br>
+             {{ form.colour.label }}
              {{ form.colour(size=32) }}
          </p>
          <br>
+         <p> 
+            {{ form.row.label }}<br>
+            {{ form.row(size=3) }}
+        </p>
+        <br>
          <p>
              {{ form.submit() }}
          </p>

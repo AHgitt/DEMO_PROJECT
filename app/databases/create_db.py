@@ -1,10 +1,11 @@
 import mysql.connector
 
 mydb = mysql.connector.connect(
-    host="localhost",
+    host="db",
     user="root",
     passwd="password123",
-    database='my_websites'
+    database='my_websites',
+    auth_plugin='mysql_native_password'
 )
 
 my_cursor = mydb.cursor()

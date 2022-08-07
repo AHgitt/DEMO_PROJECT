@@ -1,4 +1,25 @@
 {% block content %}
+    <head>
+        <style>
+            body {
+                background-color: rgb(255, 223, 190);
+            }
+    
+            h2 {
+                color: maroon;
+                margin-left: 40px;
+            }
+            .column {
+                float: left;
+                width: 33.33%;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
     <div id="index_overdrive" class="content_zero">
         <h2 style="font-size:36px">Website Tracker</h2>
         <h3 style="font-size:24px">See which of your favourite websites are down</h3>
@@ -6,19 +27,59 @@
     <div class="content">
     <span><a href="{{ url_for('add_site') }}">Add a Website</a></span>
     <br><br>
-    {% for site, status in data %}
-        <p style="color:{{ site.site_colour }}">
-        URL: {{ site.site_url }}
-            {% if status==True: %}
-                <span style="color:green">LIVE</span>
-            {% endif %}
-            {% if status==False: %}
-                <span style="color:red">OFFLINE</span>
-            {% endif %}
-        <br>
-        <span><a href="{{ url_for('modify_site', url=site.site_url) }}">Update</a></span>
-        </p>
-    {% endfor %}
+    <div class="row">
+        <div class="column">
+            {% for site, status in data1 %}
+                {% if site.row_id==0: %}
+                    <p style="color:{{ site.site_colour }};font-family:{{fonts[0].font}}">
+                    URL: {{ site.site_url }}
+                        {% if status==True: %}
+                            <span style="color:green">LIVE</span>
+                        {% endif %}
+                        {% if status==False: %}
+                            <span style="color:red">OFFLINE</span>
+                        {% endif %}
+                    <br>
+                    <span><a href="{{ url_for('modify_site', url=site.site_url) }}">Update</a></span>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="column">
+            {% for site, status in data2 %}
+                {% if site.row_id==1: %}
+                    <p style="color:{{ site.site_colour }};font-family:{{fonts[1].font}}">
+                    URL: {{ site.site_url }}
+                        {% if status==True: %}
+                            <span style="color:green">LIVE</span>
+                        {% endif %}
+                        {% if status==False: %}
+                            <span style="color:red">OFFLINE</span>
+                        {% endif %}
+                    <br>
+                    <span><a href="{{ url_for('modify_site', url=site.site_url) }}">Update</a></span>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="column">
+            {% for site, status in data3 %}
+                {% if site.row_id==2: %}
+                    <p style="color:{{ site.site_colour }};font-family:{{fonts[2].font}}">
+                    URL: {{ site.site_url }}
+                        {% if status==True: %}
+                            <span style="color:green">LIVE</span>
+                        {% endif %}
+                        {% if status==False: %}
+                            <span style="color:red">OFFLINE</span>
+                        {% endif %}
+                    <br>
+                    <span><a href="{{ url_for('modify_site', url=site.site_url) }}">Update</a></span>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
     <body>
       {% for msg in get_flashed_messages() %}
       <h1 style="color: #FF0000">{{ msg }}</h1>

@@ -1,30 +1,81 @@
-version: "3"
+version: '3'
 services:
-  python-flask-app:
+  app:
+    depends_on:
+      - mysql
     image: ahdock/flask
-    container_name: python-flask-app
-    ports:
-      - "5002:5000"
+    container_name: flask_app
+    restart: always
+    labels:
+      project: "flask"
+      day: "7 Aug 2022"
+    build:
+      # build the image from Dockerfile
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      # set database, memcached etc credentials
+      DB_HOST: mysql
+      DB_NAME: flask
+      DB_USER: flask
+      DB_PASSWORD: password123
     volumes:
-      - ./:/app
-    networks:
-      - mysql-python-app-network
+      - ./app:/app
+    links:
+      # network connection with these services
+      - mysql
+    depends_on:
+      # build those images first
+      - mysql
+    ports:
+      # bind on our 5000 port because most people have 80, 8080 already bound
+      - "5000:5000"
+    # networks:
+    #   appNetwork:
 
-  mysql-flask-app:
+  mysql:
+    container_name: flask_mysql
     image: mysql:8.0.17
-    container_name: mysql-flask-app
+    volumes:
+        # pass volume named mysql-data to mysql container
+      - mysql-data:/var/lib/mysql
+    restart: unless-stopped
+    labels:
+      project: "flask"
+      day: "7 Aug 2022"
+    # ports:
+    #   - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password123
       MYSQL_DATABASE: my_websites
-    ports:
-      - "3309:3306"
-    volumes:
-      - mysql-python-app-volume:/var/lib/mysql
-      - mysql-python-app-volume-config:/etc/mysql
+      MYSQL_USER: flask
+      MYSQL_PASSWORD: password123
+    # networks:
+    #   appNetwork:
 
-networks:
-  mysql-python-app-network:
-    name: mysql-python-app-network
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: flask_phpmyadmin
+    restart: unless-stopped
+    labels:
+      project: "flask"
+      day: "7 Aug 2022"
+    ports:
+      - "5010:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: flask
+      PMA_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: password123
+    # networks:
+    #   appNetwork:
+
+# volumes definition here
 volumes:
-  mysql-python-app-volume:
-  mysql-python-app-volume-config:
+  # just a persistance data
+  mysql-data:
+    driver: local
+# networks:
+#   appNetwork:
