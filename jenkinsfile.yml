@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'master' }
+    stages {
+        stage('build') {
+            steps {
+                script {
+                    sh 'docker-compose up -d --build'
+                }
+            }
+        }
+    }
+}
