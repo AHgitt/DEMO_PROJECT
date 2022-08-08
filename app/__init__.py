@@ -15,9 +15,9 @@ class Sites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     site_url = db.Column(db.String(50), nullable=False)
     site_colour = db.Column(db.String(30), nullable=False)
-    row_id = db.Column(db.Integer, nullable=False)
+    column_id = db.Column(db.Integer, nullable=False)
 
-class Rows(db.Model):
+class Columns(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     font = db.Column(db.String(50), nullable=False)
 
@@ -30,12 +30,12 @@ class Rows(db.Model):
 db.create_all()
 db.session.commit()
 
-row_one = Rows('Courier New')
-row_two = Rows('Trebuchet MS')
-row_three = Rows('Brush Script MT')
-db.session.add(row_one)
-db.session.add(row_two)
-db.session.add(row_three)
+column_one = Columns('Courier New')
+column_two = Columns('Trebuchet MS')
+column_three = Columns('Brush Script MT')
+db.session.add(column_one)
+db.session.add(column_two)
+db.session.add(column_three)
 db.session.commit()
 
 from app import routes

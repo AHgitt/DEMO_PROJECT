@@ -2,11 +2,11 @@
     <head>
         <style>
             body {
-                background-color: rgb(177, 254, 255);
+                background-color: linen;
             }
     
             h2 {
-                color: rgb(82, 0, 78);
+                color: maroon;
                 margin-left: 40px;
             }
             .column {
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="column">
             {% for site, status in data1 %}
-                {% if site.row_id==1: %}
+                {% if site.column_id==1: %}
                     <p style="color:{{ site.site_colour }};font-family:{{fonts[0].font}}">
                     URL: {{ site.site_url }}
                         {% if status==True: %}
@@ -47,7 +47,7 @@
         </div>
         <div class="column">
             {% for site, status in data2 %}
-                {% if site.row_id==2: %}
+                {% if site.column_id==2: %}
                     <p style="color:{{ site.site_colour }};font-family:{{fonts[1].font}}">
                     URL: {{ site.site_url }}
                         {% if status==True: %}
@@ -64,7 +64,7 @@
         </div>
         <div class="column">
             {% for site, status in data3 %}
-                {% if site.row_id==3: %}
+                {% if site.column_id==3: %}
                     <p style="color:{{ site.site_colour }};font-family:{{fonts[2].font}}">
                     URL: {{ site.site_url }}
                         {% if status==True: %}

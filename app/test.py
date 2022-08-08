@@ -11,6 +11,11 @@ class MyTest(unittest.TestCase):
         response = tester.get('index', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
+    def test_create_page(self):
+        tester = flask_app.test_client(self)
+        response = tester.get('addsite', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
 
 if __name__ == '__main__':
     unittest.main()
