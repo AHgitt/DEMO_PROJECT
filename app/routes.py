@@ -38,7 +38,7 @@ def index():
 def modify_site(url):
 
     site = Sites.query.filter_by(site_url=url).first()
-    form = UpdateForm(row=int(site.row_id)-1)
+    form = UpdateForm(row=int(site.row_id))
 
     #Populate the text boxes with values from database
     if request.method == 'GET':
