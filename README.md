@@ -35,19 +35,19 @@ This web app allows you do add sites you regularly use and would like to see the
 - Docker
 - Jenkins
 
-![App Structure](app_structure.png "App Structure")
+![App Structure](images/app_structure.png "App Structure")
 
 ## Risk Assessment
 
-![Risk Assessment](risk_assessment.png "Risk Assessment")
+![Risk Assessment](images/risk_assessment.png "Risk Assessment")
 
 ## Entity Relationship Diagram
 
-![Entity Relationship Diagram](db_relationship.png "Entity Relationship Diagram")
+![Entity Relationship Diagram](images/db_relationship.png "Entity Relationship Diagram")
 
 ## CI/CD Pipeline
 
-![CI/CD Pipeline](cicd_pipeline.png "CI/CD Pipeline")
+![CI/CD Pipeline](images/cicd_pipeline.png "CI/CD Pipeline")
 
 ## What Can Be Improved?
 
