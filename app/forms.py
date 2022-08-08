@@ -11,6 +11,6 @@ class CreateForm(FlaskForm):
 class UpdateForm(FlaskForm):
     url = StringField('URL: ', validators=[DataRequired()])
     colour = StringField('Colour: ', validators=[DataRequired()])
-    row = SelectField('Row: ', choices=[(0,'1'),(1,'2'),(2,'3')], validators=[DataRequired()])
+    row = SelectField('Row: ', choices=['1','2','3'], validators=[DataRequired()])
     submit = SubmitField('Update Website')
     submit2 = SubmitField('Delete Website')
